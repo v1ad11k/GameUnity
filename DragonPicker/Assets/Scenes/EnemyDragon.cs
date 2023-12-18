@@ -11,7 +11,22 @@ public class EnemyDragon : MonoBehaviour
     public float chanceDirections = 0.1f; // Определяет вероятность изменения направления движения
     void Start()
     {
+
+        Invoke("DropEgg", 2f); // 1
+
     }
+
+    void DropEgg() // 2
+    {
+        Vector3 myVector = new
+        Vector3(0.0f, 5.0f, 0.0f);
+        GameObject egg =
+        Instantiate<GameObject>(dragonEggPrefab);
+        egg.transform.position =
+        transform.position + myVector;
+        Invoke("DropEgg", timeBetweenEggDrops);
+    }
+
     void Update()
     {
         Vector3 pos = transform.position; //1
